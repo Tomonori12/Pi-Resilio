@@ -64,9 +64,9 @@ mv resilio-sync_arm.tar.gz archive
 ```
 
 ここで自動起動もできるようにしておく
+
 ```
 sudo systemctl enable rsync.service
 ```
-
-
+あれ？これじゃ自動起動しないな？　あーなるほど。　わからん。
 
