@@ -1,15 +1,21 @@
 ### ラズパイでResilioを動かす
 
-外付けフォーマット　⇒　マウント設定
+外付けフォーマット　（ここはWindowsでやったほうがいい？ntfsフォーマットを利用した。）
 
+その後　⇒　ラズパイに挿して、マウント設定
+
+```
+dmesg
 sudo fdisk -l
+sudo blkid などを駆使してマウントする情報を確保
+```
 
-
-sudo blkid /dev/sdaなどでマウントする情報を確保
-
+マウントするディスク情報の取得
 ```
 /dev/sda1: LABEL="SyncDrive" UUID="42C0B480C0B47BAB" TYPE="ntfs" PARTUUID="3701b122-01"
 ```
+
+ディスクはhomeディレクトリのSyncDriveにマウントさせる。
 
 
 sudo /etc/fstabに書き込む（一番下のUUIDが書き込んだ状態）
@@ -59,7 +65,7 @@ mv resilio-sync_arm.tar.gz archive
 
 ここで自動起動もできるようにしておく
 ```
-sudo sudo systemctl enable rsync.service
+sudo systemctl enable rsync.service
 ```
 
 
