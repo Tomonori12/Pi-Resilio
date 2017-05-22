@@ -66,8 +66,34 @@ mv resilio-sync_arm.tar.gz archive
 ここで自動起動もできるようにしておく
 
 ```
-sudo systemctl enable rsync.service
+sudo editor /etc/init.d/btsync
 ```
-あれ？これじゃ自動起動しないな？　あーなるほど。　わからん。
-そりゃそうだ。これはresilioじゃない。自動起動は手で登録する必要があるか。やっぱり。
 
+```
+#! /bin/sh
+# /etc/init.d/rslsync
+#
+
+# Carry out specific functions when asked to by the system
+case "$1" in
+start)
+    /home/pi/Resilio/rslsync
+    ;;
+stop)
+    killall rslsync
+    ;;
+*)
+    echo "Usage: /etc/init.d/rslsync {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0
+                                                 
+```
+
+で、Resilioフォルダ内のrslsyncに実行権限を与える。
+
+```
+chmod 755 rslsync
+```
