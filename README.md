@@ -96,4 +96,8 @@ exit 0
 
 ```
 chmod 755 rslsync
+sudo update-rc.d resilio defaults
 ```
+
+たぶんこんな感じ。
+参考：https://www.resilio.com/blog/sync-hacks-how-to-sync-without-data-loss-using-btsync-raspberry-pi
